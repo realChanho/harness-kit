@@ -23,8 +23,8 @@ harness-kit/
 
 | 이름          | 설명 | 다운로드 |
 | ------------- | ---- | -------- |
-| `superpowers` | Claude Code용 핵심 skill 라이브러리 — TDD·디버깅·협업 패턴 등 검증된 워크플로(Jesse Vincent / [obra/superpowers](https://github.com/obra/superpowers)) | `/plugin install superpowers@claude-plugins-official` |
-| `understand-anything` | 코드베이스·지식베이스·문서를 대화형 지식 그래프로 변환해 탐색·검색·질문([Lum1104/Understand-Anything](https://github.com/Lum1104/Understand-Anything)) | 1. `/plugin marketplace add Lum1104/Understand-Anything`<br>2. `/plugin install understand-anything` |
+| `superpowers` | 제대로 작동하는 에이전트 스킬 프레임워크이자 소프트웨어 개발 방법론 — TDD·디버깅·협업 등 검증된 워크플로 라이브러리(Jesse Vincent / [obra/superpowers](https://github.com/obra/superpowers)) | `/plugin install superpowers@claude-plugins-official` |
+| `understand-anything` | 코드를 처음 볼 때의 막막함 해결 — 코드베이스·지식베이스·문서를 대화형 지식 그래프로 변환해 탐색·검색·질문([Lum1104/Understand-Anything](https://github.com/Lum1104/Understand-Anything)) | 1. `/plugin marketplace add Lum1104/Understand-Anything`<br>2. `/plugin install understand-anything` |
 
 ### Agents
 
