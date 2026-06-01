@@ -23,9 +23,7 @@ harness-kit/
 
 | 이름          | 설명 | 다운로드 |
 | ------------- | ---- | -------- |
-| _(아직 없음)_ |      |          |
-
-> skill 다운로드 명령: `npx skills@latest add <your-id>/harness-kit/<skill-name>`
+| `superpowers` | Claude Code용 핵심 skill 라이브러리 — TDD·디버깅·협업 패턴 등 검증된 워크플로(Jesse Vincent / [obra/superpowers](https://github.com/obra/superpowers)) | `/plugin install superpowers@claude-plugins-official` |
 
 ### Agents
 
