@@ -7,12 +7,15 @@
 
 ```
 harness-kit/
-├─ skills/      # 재사용 skill (각 폴더 = 하나의 skill, SKILL.md 포함)
-├─ agents/      # subagent 정의 (*.md)
-├─ hooks/       # 훅 스크립트 + 설정 스니펫
-├─ claude-md/   # CLAUDE.md 템플릿 / 스니펫 모음
+├─ .claude/
+│  ├─ skills/   # 재사용 skill (각 폴더 = 하나의 skill, SKILL.md 포함)
+│  ├─ agents/   # subagent 정의 (*.md)
+│  └─ hooks/    # 훅 스크립트 (+ .claude/settings.json 등록)
+├─ claude-md/   # CLAUDE.md 붙여넣기 스니펫 (루트)
 └─ README.md
 ```
+
+> 자산을 `.claude/` 아래 두어 **이 레포에서 바로 로드·테스트**할 수 있게 했습니다. `claude-md/` 스니펫은 자동 로드 대상이 아니라 붙여넣기/`@import`용이라 루트에 둡니다.
 
 ## 🧩 수록 자산
 
