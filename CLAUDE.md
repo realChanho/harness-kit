@@ -15,6 +15,7 @@ Claude Code 하네스 엔지니어링 자산(skills · agents · hooks · CLAUDE
 ## 핵심 규칙
 
 - 자산을 추가/변경하면 **README의 "수록 자산" 표를 반드시 같이 갱신**한다(이름·설명·다운로드). 단계는 아래 [자산 추가 절차](#자산-추가-절차) 참고.
+  - 예외: `.claude/skills/add-harness-asset/`는 이 절차 자체를 돕는 **레포 내부 도구 스킬**이다. 레포에 커밋해 공유하지만 배포용 자산이 아니므로 카탈로그(README 표)에는 등재하지 않는다.
 - 이름은 **kebab-case**.
 - skill의 `SKILL.md`에는 `name`·`description` frontmatter가 **필수**다. `skills` CLI가 이 둘로 자산을 인식한다.
 - 레포의 자산 파일(`.claude/skills/`·`.claude/agents/`·`.claude/hooks/`, `claude-md/`)은 이 프로젝트에서 **로드·테스트하는 동시에 배포용 카탈로그**다. README 다운로드 칸은 "로컬 파일 붙여넣기"가 아니라 **정식 설치 경로**(`skills` CLI `npx skills@latest add …`, 외부 출처는 원본 플러그인 `/plugin install …`)를 가리킨다. "동기화 안 된다"는 식의 부연 설명은 README에 넣지 않는다.
