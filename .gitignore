@@ -1,6 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+__pycache__/
 
 # 개인용 로컬 설정 (플러그인 활성화 등) — 배포 대상 아님
 .claude/settings.local.json

@@ -24,12 +24,12 @@ Claude Code 하네스 엔지니어링 자산(skills · agents · hooks · CLAUDE
 
 1. **종류 확인 → 생성 위치 결정**
 
-   | 종류             | 생성 위치                                                  | README 표              |
-   | ---------------- | ---------------------------------------------------------- | ---------------------- |
-   | skill            | `.claude/skills/<name>/SKILL.md`                           | `### Skills`           |
-   | agent            | `.claude/agents/<name>.md`                                 | `### Agents`           |
-   | hook             | `.claude/hooks/<name>.*` (+ `.claude/settings.json` 등록)  | `### Hooks`            |
-   | CLAUDE.md 스니펫 | `claude-md/<name>.md` (루트)                               | `### CLAUDE.md 스니펫` |
+   | 종류             | 생성 위치                                                 | README 표               |
+   | ---------------- | --------------------------------------------------------- | ----------------------- |
+   | skill            | `.claude/skills/<name>/SKILL.md`                          | `### Skills · Commands` |
+   | agent            | `.claude/agents/<name>.md`                                | `### Agents`            |
+   | hook             | `.claude/hooks/<name>.*` (+ `.claude/settings.json` 등록) | `### Hooks`             |
+   | CLAUDE.md 스니펫 | `claude-md/<name>.md` (루트)                              | `### CLAUDE.md 스니펫`  |
 
 2. **파일 스캐폴딩** — 위 위치에 파일을 만든다. skill이면 `SKILL.md` frontmatter의 `name`(폴더명과 일치)·`description`이 필수. 필요 시 같은 폴더에 `scripts/`·`templates/`·`reference.md` 등 부속 파일을 둔다.
 
