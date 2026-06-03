@@ -27,6 +27,7 @@ harness-kit/
 | `understand-anything` | 코드를 처음 볼 때의 막막함 해결 — 코드베이스·지식베이스·문서를 대화형 지식 그래프로 변환해 탐색·검색·질문([Lum1104/Understand-Anything](https://github.com/Lum1104/Understand-Anything))                                                           | 1. `/plugin marketplace add Lum1104/Understand-Anything`<br>2. `/plugin install understand-anything` |
 | `code-review`         | 현재 diff를 리뷰해 **정확성 버그 + 재사용·단순화·효율 정리거리**를 찾는 Claude Code 번들 skill. effort `low`~`max`, `ultra`(클라우드 멀티에이전트 심층 리뷰), `--comment`/`--fix` 지원                                                             | Claude Code 내장 — 설치 불필요. [커맨드 레퍼런스](https://code.claude.com/docs/en/commands)          |
 | `skill-creator`       | skill을 처음부터 만들고 기존 skill 편집·최적화, eval로 성능 벤치마킹(분산 분석)·트리거 정확도 개선까지 돕는 Anthropic 공식 skill 제작 도구([skill-creator](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator)) | `/plugin install skill-creator@claude-plugins-official`                                              |
+| `btw`                 | 작업을 멈추지 않고 곁가지 질문을 던지는 Claude Code 내장 명령. 도구 없는 임시 오버레이 에이전트가 현재 대화 맥락만으로 한 번 답하고, 그 질의응답은 메인 히스토리에 남지 않아 토큰을 아낌                                                           | Claude Code 내장 — 설치 불필요. [커맨드 레퍼런스](https://code.claude.com/docs/en/commands)          |
 
 ### Agents
 
