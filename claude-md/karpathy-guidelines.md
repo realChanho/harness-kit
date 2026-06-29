@@ -74,13 +74,14 @@ When the user writes in Korean, your output is also Korean:
 
 ## 6. File Header Comments in Korean
 
-**First line of every new source file: a one-line Korean comment stating its role.**
+**Add a one-line Korean header comment to new source files — but only where the project already does this.**
 
-When creating a new file:
+This rule defers to §3 (Match existing style). Apply it only when the project's existing source files already use header comments, or the project mandates Korean comments. If the surrounding files have no header comments, follow that convention instead — don't introduce a new one.
+
+When the convention applies, on the first line of a new file (directly under required directives like `'use client'`, `'use server'`, or a shebang):
 - TypeScript/JavaScript: `// 사용자 인증 상태를 관리하는 Context Provider`
 - Python: `# KIS API 호출을 비동기로 래핑하는 클라이언트`
 - SQL: `-- 일별 집계 결과를 저장하는 머티리얼라이즈드 뷰`
-- Place it directly under required directives (`'use client'`, `'use server'`, shebang).
 - Skip config files (`*.config.ts`, `package.json`, etc.).
 
 Why: agents read files selectively, not whole codebases. A one-line Korean header gives instant context so the next session (human or agent) can navigate without re-reading the entire file.
@@ -98,14 +99,15 @@ This is the step LLMs skip most often. Treat it as non-negotiable.
 
 ## 8. Semantic Commits
 
-**Commit when one logical change is complete. Don't wait for the user to ask.**
+**Commit only when the user asks. When they do, keep each commit to one logical change.**
 
-- The test: "Can I describe this commit in one sentence?" If yes, commit. If no, the changes are still mixed — split them.
+- Default: don't commit unless the user requests it. Instead, you may stage changes and propose a commit message.
+- Never commit directly to the default branch (`main`/`master`/`develop`). If you're on it, create a branch first.
+- When committing: one logical change per commit. The test is "Can I describe this commit in one sentence?" If no, split it.
 - Good: "auth 미들웨어 추가". Bad: "auth 추가하고 UI도 고치고 버그도 수정" (split into 3).
-- Don't accumulate 20 unrelated edits and lose the ability to roll back individually.
-- Don't commit just to commit — meaningful units only.
+- Don't pile 20 unrelated edits into one commit — you lose the ability to roll back individually.
 
-Note: For solo prototypes or throwaway scripts, group commits loosely if it slows you down. The point is reversibility, not ceremony.
+Note: For solo prototypes or throwaway scripts, group commits loosely if ceremony slows you down. The point is reversibility.
 
 ## 9. Read Errors, Don't Guess
 
