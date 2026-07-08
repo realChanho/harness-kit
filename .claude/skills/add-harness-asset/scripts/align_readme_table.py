@@ -10,7 +10,7 @@ harness-kit README의 표는 한글(전각 2칸)·영문(1칸)이 섞여 있어,
   python3 align_readme_table.py --readme README.md --section "Skills" \
       --cells '`my-skill`' '한 줄 설명…' '`npx skills@latest add me/harness-kit/my-skill`'
 
---section 은 표 바로 위의 '###' 제목 텍스트(예: Skills / Agents / Hooks / "CLAUDE.md 스니펫").
+--section 은 표 바로 위의 제목 텍스트(레벨 무관. 예: skill 카테고리 "프론트엔드" / Agents / Hooks / "CLAUDE.md 스니펫").
 3개 칸(--cells)은 표 컬럼 순서대로 넣는다(Skills/Agents=이름·설명·다운로드,
 Hooks=이름·트리거·다운로드, 스니펫=이름·용도·다운로드).
 '_(아직 없음)_' placeholder 행은 자동으로 제거된다. 같은 이름 행이 이미 있으면 에러로 멈춘다.

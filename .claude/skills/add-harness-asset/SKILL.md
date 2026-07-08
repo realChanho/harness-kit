@@ -17,15 +17,19 @@ harness-kit에 자산을 추가/변경하는 절차를 한 번에 끝내기 위�
 
 ### 1. 자산 종류 판별 → 위치·README 표
 
-| 종류             | 생성 위치                                                 | README 표               |
-| ---------------- | --------------------------------------------------------- | ----------------------- |
-| skill            | `.claude/skills/<name>/SKILL.md`                          | `### Skills · Commands` |
-| agent            | `.claude/agents/<name>.md`                                | `### Agents`            |
-| hook             | `.claude/hooks/<name>.*` (+ `.claude/settings.json` 등록) | `### Hooks`             |
-| CLAUDE.md 스니펫 | `claude-md/<name>.md` (루트)                              | `### CLAUDE.md 스니펫`  |
+| 종류             | 생성 위치                                                 | README 표                                       |
+| ---------------- | --------------------------------------------------------- | ----------------------------------------------- |
+| skill            | `.claude/skills/<name>/SKILL.md`                          | `### Skills · Commands` 아래 카테고리 `####` 표 |
+| agent            | `.claude/agents/<name>.md`                                | `### Agents`                                    |
+| hook             | `.claude/hooks/<name>.*` (+ `.claude/settings.json` 등록) | `### Hooks`                                     |
+| CLAUDE.md 스니펫 | `claude-md/<name>.md` (루트)                              | `### CLAUDE.md 스니펫`                          |
 
 이름은 **kebab-case**. skill이면 폴더명 = `SKILL.md`의 `name` frontmatter여야 한다(`skills`
 CLI가 이걸로 자산을 인식한다).
+
+skill 표는 `### Skills · Commands` 아래 **카테고리별 `####` 소제목**(프론트엔드, 워크플로 · 방법론,
+코드 리뷰 · 품질, 하네스 관리 · 유틸리티 등)으로 나뉘어 있다. 자산 성격에 맞는 카테고리 표를 고르고,
+맞는 게 없으면 `####` 소제목과 3열 표(`이름 | 설명 | 다운로드`)를 신설한다.
 
 ### 2. 출처 유형 판별 → "다운로드" 칸
 
@@ -61,11 +65,13 @@ CLI가 이걸로 자산을 인식한다).
 
 ```bash
 python3 .claude/skills/add-harness-asset/scripts/align_readme_table.py \
-  --readme README.md --section "Skills · Commands" \
+  --readme README.md --section "프론트엔드" \
   --cells '`<name>`' '<설명/트리거/용도 한 줄>' '<다운로드 — 정식 설치 경로>'
 ```
 
-- `--section`: 표 위의 `###` 제목 텍스트 — `Skills · Commands` / `Agents` / `Hooks` / `CLAUDE.md 스니펫`.
+- `--section`: 표 바로 위 제목 텍스트(레벨 무관). skill은 카테고리 소제목(`프론트엔드` /
+  `워크플로 · 방법론` / `코드 리뷰 · 품질` / `하네스 관리 · 유틸리티` 등), 그 외 종류는
+  `Agents` / `Hooks` / `CLAUDE.md 스니펫`.
 - `--cells`: 표 컬럼 순서대로 3개. 중간 칸 헤더는 표마다 다르다(Skills·Agents=설명, Hooks=트리거,
   스니펫=용도) — 의미만 맞춰 넣는다.
 - 셀 안에 백틱·`<br>`·마크다운 링크를 그대로 써도 된다. 셸 인용 때문에 작은따옴표로 감싸고,
