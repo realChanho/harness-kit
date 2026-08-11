@@ -51,7 +51,7 @@ CLI가 이걸로 자산을 인식한다).
 - **hook**: `.agents/hooks/<name>.*` 스크립트를 만들고 `.agents/settings.json`의 hooks에 등록한다.
 - **스니펫**: `agents-md/<name>.md`. 자동 로드 대상이 아니라 붙여넣기/`@import`용이라 루트에 둔다.
 
-외부 플러그인·빌트인을 **참조만** 하는 경우(예: `superpowers`, `code-review`)는 이 레포에 파일을
+외부 플러그인·빌트인을 **참조만** 하는 경우(예: `superpowers`, `btw`)는 이 레포에 파일을
 만들지 않는다 — README 표에 카탈로그 행만 추가한다.
 
 ### 4. README 표 갱신 (정렬 스크립트 사용)

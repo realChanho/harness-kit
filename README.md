@@ -31,7 +31,6 @@ harness-kit/
 | `vercel-composition-patterns`   | 확장 가능한 React 컴포지션 패턴 가이드. boolean prop 증식 리팩토링, 컴파운드 컴포넌트·render props·Context 프로바이더 등 재사용 컴포넌트 API 설계에 사용하며 React 19 API 변경을 반영([vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills))   | `npx skills@latest add vercel-labs/agent-skills --skill vercel-composition-patterns`                                  |
 | `vercel-react-view-transitions` | React View Transition API(`<ViewTransition>`·`addTransitionType`)로 서드파티 라이브러리 없이 페이지 전환·공유 요소·리스트 재정렬 애니메이션을 구현하는 가이드. Next.js 연동 포함([vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills))        | `npx skills@latest add vercel-labs/agent-skills --skill vercel-react-view-transitions`                                |
 | `vercel-react-native-skills`    | React Native·Expo 베스트 프랙티스. 리스트 성능 최적화·애니메이션·네이티브 모듈 등 모바일 앱 성능 작업에 사용([vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills))                                                                            | `npx skills@latest add vercel-labs/agent-skills --skill vercel-react-native-skills`                                   |
-| `web-design-guidelines`         | UI 코드를 Web Interface Guidelines 기준으로 검수 — 접근성·UX·디자인 감사("review my UI", "check accessibility" 류 요청)([vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills))                                                                 | `npx skills@latest add vercel-labs/agent-skills --skill web-design-guidelines`                                        |
 
 #### 배포 · 인프라
 
@@ -47,25 +46,18 @@ harness-kit/
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | `superpowers` | 제대로 작동하는 에이전트 스킬 프레임워크이자 소프트웨어 개발 방법론 — TDD·디버깅·협업 등 검증된 워크플로 라이브러리(Jesse Vincent / [obra/superpowers](https://github.com/obra/superpowers)) | `/plugin install superpowers@claude-plugins-official` |
 
-#### 코드 리뷰 · 품질
-
-| 이름          | 설명                                                                                                                                                                                   | 다운로드                                                                                    |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `code-review` | 현재 diff를 리뷰해 **정확성 버그 + 재사용·단순화·효율 정리거리**를 찾는 Claude Code 번들 skill. effort `low`~`max`, `ultra`(클라우드 멀티에이전트 심층 리뷰), `--comment`/`--fix` 지원 | Claude Code 내장 — 설치 불필요. [커맨드 레퍼런스](https://code.claude.com/docs/en/commands) |
-
-#### 문서 · 글쓰기
-
-| 이름                 | 설명                                                                                                                                                                                                  | 다운로드                                                                    |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `writing-guidelines` | 문서·산문을 Vercel Writing Guidelines 기준으로 검수 — 보이스·톤·스타일 감사("review my docs", "check writing style" 류 요청)([vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)) | `npx skills@latest add vercel-labs/agent-skills --skill writing-guidelines` |
-
 #### 하네스 관리 · 유틸리티
 
 | 이름                                        | 설명                                                                                                                                                                                                                                                                                                               | 다운로드                                                                                    |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| `skill-creator`                             | skill을 처음부터 만들고 기존 skill 편집·최적화, eval로 성능 벤치마킹(분산 분석)·트리거 정확도 개선까지 돕는 Anthropic 공식 skill 제작 도구([skill-creator](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator))                                                                 | `/plugin install skill-creator@claude-plugins-official`                                     |
 | `claude-md-improver`,<br>`revise-claude-md` | CLAUDE.md 관리 플러그인. `claude-md-improver`(skill)는 레포의 모든 CLAUDE.md를 스캔·품질 평가 후 승인받아 타깃 개선하고, `revise-claude-md`(command)는 이번 세션의 학습을 CLAUDE.md에 반영함([claude-md-management](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management)) | `/plugin install claude-md-management@claude-plugins-official`                              |
 | `btw`                                       | 작업을 멈추지 않고 곁가지 질문을 던지는 Claude Code 내장 명령. 도구 없는 임시 오버레이 에이전트가 현재 대화 맥락만으로 한 번 답하고, 그 질의응답은 메인 히스토리에 남지 않아 토큰을 아낌                                                                                                                           | Claude Code 내장 — 설치 불필요. [커맨드 레퍼런스](https://code.claude.com/docs/en/commands) |
+
+#### 보안 · 검증
+
+| 이름           | 설명                                                                                                                                                                                                                                                                                                                                                                                                                            | 다운로드                                                                                            |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `skillspector` | skill·MCP 서버를 **설치 전에** 보안 스캔하는 NVIDIA 오픈소스 CLI. 정적 패턴 매칭 + 선택적 LLM 시맨틱 평가 2단계로 17개 카테고리 68개 취약 패턴(프롬프트 인젝션·데이터 유출·권한 상승·공급망·MCP 툴 포이즈닝 등)을 잡아 0~100 위험 점수와 터미널/JSON/Markdown/SARIF 리포트를 냄. Claude Code·Codex·Gemini CLI skill 대상, MCP 서버로 등록해 설치 게이트로도 사용([NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)) | `uv tool install git+https://github.com/NVIDIA/skillspector.git` 후 `skillspector scan ./my-skill/` |
 
 ### Agents
 
@@ -81,9 +73,9 @@ harness-kit/
 
 ### CLAUDE.md 스니펫
 
-| 이름                  | 용도                                                                                                                                                                          | 다운로드                                                                                        |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `karpathy-guidelines` | LLM 코딩 실수를 줄이는 행동 가이드라인. Andrej Karpathy 기반 4개 + 한국어 출력 규약 2개 + 프로세스 규율(테스트·시맨틱 커밋·에러 읽기) 3개를 더한 harness-kit 확장본(총 9섹션) | `claude-md/karpathy-guidelines.md` 내용을 전역 또는 프로젝트 `CLAUDE.md`에 붙여넣기 / `@import` |
+| 이름          | 용도 | 다운로드 |
+| ------------- | ---- | -------- |
+| _(아직 없음)_ |      |          |
 
 ### Agent Personas
 
