@@ -8,11 +8,11 @@ harness-kit README의 표는 한글(전각 2칸)·영문(1칸)이 섞여 있어,
 
 사용:
   python3 align_readme_table.py --readme README.md --section "Skills" \
-      --cells '`my-skill`' '한 줄 설명…' '`npx skills@latest add me/harness-kit/my-skill`'
+      --cells '`my-skill`' '한 줄 설명…'
 
 --section 은 표 바로 위의 제목 텍스트(레벨 무관. 예: skill 카테고리 "프론트엔드" / Agents / Hooks / "CLAUDE.md 스니펫").
-3개 칸(--cells)은 표 컬럼 순서대로 넣는다(Skills/Agents=이름·설명·다운로드,
-Hooks=이름·트리거·다운로드, 스니펫=이름·용도·다운로드).
+--cells 는 표 컬럼 순서대로 넣는다(Skills/Agents=이름·설명, Hooks=이름·트리거,
+스니펫=이름·용도). 개수는 대상 표의 헤더 열 수와 같아야 한다.
 '_(아직 없음)_' placeholder 행은 자동으로 제거된다. 같은 이름 행이 이미 있으면 에러로 멈춘다.
 """
 import argparse
@@ -69,7 +69,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--readme", required=True)
     ap.add_argument("--section", required=True, help="표 위 ### 제목 텍스트")
-    ap.add_argument("--cells", nargs=3, required=True, metavar=("COL1", "COL2", "COL3"))
+    ap.add_argument("--cells", nargs="+", required=True, metavar="CELL")
     ap.add_argument("--amb", type=int, default=1, help="ambiguous 폭(기본 1)")
     args = ap.parse_args()
 
@@ -81,8 +81,9 @@ def main():
     header_idx, sep_idx, data_idx = find_table(lines, h)
 
     header = split_cells(lines[header_idx])
-    if len(header) != 3:
-        raise SystemExit(f"[에러] 3열 표가 아닙니다(헤더 {len(header)}열). 이 스크립트는 3열 전용입니다.")
+    ncol = len(header)
+    if len(args.cells) != ncol:
+        raise SystemExit(f"[에러] 대상 표는 {ncol}열인데 --cells 는 {len(args.cells)}개입니다.")
 
     rows = [split_cells(lines[d]) for d in data_idx]
     # placeholder 행 제거
@@ -96,12 +97,12 @@ def main():
     rows.append(list(args.cells))
 
     # 열 폭 = 헤더+전체 행의 최대 시각 폭
-    colw = [max(width(header[c], args.amb), max(width(r[c], args.amb) for r in rows)) for c in range(3)]
+    colw = [max(width(header[c], args.amb), max(width(r[c], args.amb) for r in rows)) for c in range(ncol)]
 
     def emit(cells):
-        return "| " + " | ".join(pad(cells[c], colw[c]) for c in range(3)) + " |"
+        return "| " + " | ".join(pad(cells[c], colw[c]) for c in range(ncol)) + " |"
 
-    block = [emit(header), "| " + " | ".join("-" * colw[c] for c in range(3)) + " |"]
+    block = [emit(header), "| " + " | ".join("-" * colw[c] for c in range(ncol)) + " |"]
     block += [emit(r) for r in rows]
 
     # 정합성: 모든 줄 시각 폭 동일해야 함
