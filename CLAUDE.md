@@ -10,6 +10,10 @@ Claude Code 하네스 엔지니어링 자산(skills · agents · hooks · CLAUDE
 - `claude-md/<name>.md` — CLAUDE.md 붙여넣기 스니펫 (루트)
 - `README.md` — "수록 자산" 표가 자산 카탈로그 겸 설치 안내
 
+<!-- mirror:verbatim -->
+- `.agents/`·`AGENTS.md` — 위 자산의 **Codex용 미러**. 정본은 `.claude/`·`CLAUDE.md`이고, 미러는 손으로 고치지 않는다. 정본을 고쳤으면 레포 루트에서 `python3 .claude/skills/add-harness-asset/scripts/sync_agents_mirror.py` 를 실행해 다시 만든다(`--check` 는 쓰지 않고 어긋난 파일만 보고). 미러는 경로(`.claude/`→`.agents/`, `claude-md/`→`agents-md/`)와 문서명(`CLAUDE.md`→`AGENTS.md`), 루트 문서의 에이전트 이름(`Claude Code`→`Codex`)만 치환한 것이다. 이 문단처럼 치환하면 안 되는 구간은 `mirror:verbatim` 주석으로 감싼다.
+<!-- /mirror:verbatim -->
+
 자산을 `.claude/` 아래 두는 이유: Claude Code가 이 경로에서 프로젝트 skill·agent·hook을 자동 로드하므로 **이 레포 자체에서 자산을 바로 켜고 테스트**할 수 있다. `claude-md/` 스니펫은 자동 로드 대상이 아니라 붙여넣기/`@import`용이라 루트에 둔다.
 
 ## 핵심 규칙

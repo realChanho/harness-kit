@@ -104,6 +104,9 @@ python3 .claude/skills/add-harness-asset/scripts/realign_readme_table.py \
 - 표의 모든 줄 시각 폭이 같은가(스크립트가 `[OK] … 줄 폭 N`으로 출력해 준다).
 - hook이면 `.claude/settings.json` 등록까지 됐는가.
 - 문서 언어는 한국어인가(README·SKILL.md 등 레포 문서 규칙).
+<!-- mirror:verbatim -->
+- 이 스킬 자체나 `CLAUDE.md` 를 고쳤다면 `python3 .claude/skills/add-harness-asset/scripts/sync_agents_mirror.py` 로 Codex용 `.agents/` 미러를 다시 만들었는가(`--check` 로 확인만 할 수도 있다).
+<!-- /mirror:verbatim -->
 
 ## 정렬은 왜 스크립트로 하나
 
