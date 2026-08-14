@@ -71,6 +71,32 @@ python3 .claude/skills/add-harness-asset/scripts/align_readme_table.py \
 스크립트가 표를 통째로 다시 정렬하므로, 새 행이 기존보다 길면 열을 넓혀 모든 행을 다시 패딩한다.
 즉 기존 행이 충분히 짧으면(열 폭 안에 들어오면) diff는 새 행 한 줄만 깔끔하게 추가된다.
 
+#### 이름이 길어 렌더링에서 쪼개질 때
+
+Markdown 표에는 열 너비 문법이 없다. 소스의 패딩은 파일을 읽을 때만 의미가 있고, 렌더링된
+열 너비는 브라우저·프리뷰가 내용 길이를 보고 정한다. 그래서 이름이 길면(대략 25자 이상)
+설명 칸에 밀려 하이픈마다 줄이 잘린다. 이럴 때는 이름 칸을 백틱 대신 `<code>` 태그로 쓰고
+하이픈을 `&#8209;`(non-breaking hyphen, U+2011)로 바꿔 줄바꿈을 막는다. 백틱 안에서는 HTML
+엔티티가 해석되지 않아 `&#8209;` 가 글자 그대로 보이므로 `<code>` 태그가 필요하다.
+
+```
+<code>supabase&#8209;postgres&#8209;best&#8209;practices</code>
+```
+
+대가가 하나 있다 — 표에서 이름을 복사하면 하이픈이 ASCII `-` 가 아니라 U+2011로 딸려온다.
+이름이 짧아 문제가 없으면 그냥 백틱을 쓴다.
+
+#### 이미 있는 행을 고친 뒤 폭만 다시 맞출 때
+
+`align_readme_table.py` 는 행 추가 전용이고, 같은 이름 행이 있으면 에러로 멈춘다. 기존 셀을
+직접 고쳤다면 같은 폴더의 `realign_readme_table.py` 로 폭만 다시 맞춘다. 폭 계산 함수를
+`align_readme_table.py` 에서 그대로 가져오므로 두 스크립트의 정렬 결과가 어긋나지 않는다.
+
+```bash
+python3 .claude/skills/add-harness-asset/scripts/realign_readme_table.py \
+  --readme README.md --section "하네스 관리 · 유틸리티"
+```
+
 ### 4. 마무리 점검
 
 - 표 행과 실제 파일 위치가 일치하는가. 참조 전용 자산이면 파일이 없는 게 의도된 상태인가.
