@@ -24,16 +24,16 @@ Codex 하네스 엔지니어링 자산(skills · agents · hooks · AGENTS.md �
 
 1. **종류 확인 → 생성 위치 결정**
 
-   | 종류             | 생성 위치                                                 | README 표               |
-   | ---------------- | --------------------------------------------------------- | ----------------------- |
-   | skill            | `.agents/skills/<name>/SKILL.md`                          | `### Skills · Commands` |
-   | agent            | `.agents/agents/<name>.md`                                | `### Agents`            |
-   | hook             | `.agents/hooks/<name>.*` (+ `.agents/settings.json` 등록) | `### Hooks`             |
-   | AGENTS.md 스니펫 | `agents-md/<name>.md` (루트)                              | `### AGENTS.md 스니펫`  |
+   | 종류             | 생성 위치                                                 | README 표                                       |
+   | ---------------- | --------------------------------------------------------- | ----------------------------------------------- |
+   | skill            | `.agents/skills/<name>/SKILL.md`                          | `### Skills · Commands` 아래 카테고리 `####` 표 |
+   | agent            | `.agents/agents/<name>.md`                                | `### Agents`                                    |
+   | hook             | `.agents/hooks/<name>.*` (+ `.agents/settings.json` 등록) | `### Hooks`                                     |
+   | AGENTS.md 스니펫 | `agents-md/<name>.md` (루트)                              | `### AGENTS.md 스니펫`                          |
 
 2. **파일 스캐폴딩** — 위 위치에 파일을 만든다. skill이면 `SKILL.md` frontmatter의 `name`(폴더명과 일치)·`description`이 필수. 필요 시 같은 폴더에 `scripts/`·`templates/`·`reference.md` 등 부속 파일을 둔다.
 
-3. **README 표 갱신** — 해당 종류 표에서 `_(아직 없음)_` placeholder 행이 있으면 지우고 `이름 | 설명` 행을 추가한다. 설명 끝에는 출처 링크(업스트림 레포·플러그인)를 단다.
+3. **README 표 갱신** — 해당 종류 표에서 `_(아직 없음)_` placeholder 행이 있으면 지우고 `이름 | 설명` 행을 추가한다. skill은 `### Skills · Commands` 아래 **카테고리별 `####` 소제목**(프론트엔드, 배포 · 인프라, 워크플로 · 방법론, 하네스 관리 · 유틸리티 등)마다 표가 따로 있으므로, 맞는 카테고리 표에 행을 추가하고 맞는 카테고리가 없으면 `####` 소제목과 표를 신설한다. 설명 끝에는 출처 링크(업스트림 레포·플러그인)를 단다.
 
 4. **마무리** — 표 행과 실제 파일 위치가 일치하는지, skill이면 `name` frontmatter가 폴더명과 같은지 확인한다.
 
